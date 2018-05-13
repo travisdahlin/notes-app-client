@@ -10,6 +10,6 @@ export default class Home extends Component {
           <p>A simple note taking app</p>
         </div>      
       </div>
-      )
+    )
   }
 }
