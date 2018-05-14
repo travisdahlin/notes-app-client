@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import { Auth } from 'aws-amplify'
+import LoaderButton from '../components/LoaderButton'
 import './Login.css'
 
 export default class Login extends Component {
@@ -61,14 +62,15 @@ export default class Login extends Component {
               onChange={this.handleChange}
             />
           </FormGroup>
-          <Button
+          <LoaderButton
             block
             bsSize="large"
             disabled={!this.validateForm()}
             type="submit"
-          >
-            Login
-          </Button>
+            isLoading={this.state.isLoading}
+            text="Login"
+            loadingText="Logging in..."
+          />
         </form>
       </div>
     )
