@@ -56,8 +56,29 @@ export default class Signup extends Component {
     }
     catch (e) {
       alert(e.message)
+      if (e.name === 'UsernameExistsException') {
+        try {
+          await Auth.resendSignUp(this.state.email)
+          this.setState({ newUser: true})
+        }
+        catch (e) {
+          alert(e.message) 
+          if (e.message === 'User is already confirmed.') {
+            try {
+              Auth.signIn(this.state.email, this.state.password)
+              this.props.userHasAuthenticated(true)
+            }
+            catch (e) {
+              alert(e.message)
+            }
+          }
+        }
+      }
     }
     this.setState({ isLoading: false })
+    if (this.props.userHasAuthenticated === true) {
+      this.props.history.push("/")
+    }
   }
 
   handleConfirmationSubmit = async event => {
@@ -72,7 +93,7 @@ export default class Signup extends Component {
       this.props.history.push("/")
     }
     catch (e) {
-      alert(e.message)
+      alert(e)
       this.setState({ isLoading: false })
     }
   }
