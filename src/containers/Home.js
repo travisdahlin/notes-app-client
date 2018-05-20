@@ -30,7 +30,7 @@ export default class Home extends Component {
   }
 
   notes() {
-    return API.get('notes', '/notes')
+    return API.get("notes", "/notes")
   }
 
   renderNotesList(notes) {
@@ -41,7 +41,7 @@ export default class Home extends Component {
               key={note.noteId}
               href={`/notes/${note.noteId}`}
               onClick={this.handleNoteClick}
-              header={note.content.trim().split('\n')[0]}
+              header={note.content.trim().split("\n")[0]}
             >
               {"Created: " + new Date(note.createdAt).toLocaleString()}
             </ListGroupItem>
@@ -59,7 +59,7 @@ export default class Home extends Component {
 
   handleNoteClick = event => {
     event.preventDefault()
-    this.props.history.push(event.currentTarget.getAttribute('href'))
+    this.props.history.push(event.currentTarget.getAttribute("href"))
   }
 
   renderLander() {
