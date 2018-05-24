@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom'
 
 export default ({ component: C, props: cProps, ...rest }) =>
   <Route
-    {..rest}
+    {...rest}
     render={props =>
       cProps.isAuthenticated
         ? <C {...props} {...cProps} />
