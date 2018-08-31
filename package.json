@@ -18,6 +18,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "aws s3 sync build/ s3://tad-notes-app-client --delete",
-    "postdeploy": "aws cloudfront create-invalidation --distribution-id E3UMSFFSQN6R5Q --paths /*"
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id EBV12WN0FCK0Q --paths /*"
   }
 }
